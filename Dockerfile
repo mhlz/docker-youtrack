@@ -1,5 +1,16 @@
-FROM dockerfile/java:oracle-java8
-MAINTAINER Oleg Yashchuk <oazoer@gmail.com>
+FROM ubuntu:14.04.2
+ 
+MAINTAINER  Mischa Holz
+ 
+ENV DEBIAN_FRONTEND noninteractive
+ENV JAVA_HOME /opt/jdk/jre
+ENV PATH $PATH:/opt/jdk/jre/bin
+ 
+RUN apt-get update && apt-get install -y wget
+ 
+RUN wget --no-check-certificate -O /tmp/pkg.tar.gz --header "Cookie: oraclelicense=a" http://download.oracle.com/otn-pub/java/jdk/7u65-b17/jdk-7u65-linux-x64.tar.gz && \
+    tar -zxf /tmp/pkg.tar.gz --xform='s/[^\/]*/jdk/' -C /opt && \
+    rm -rf /tmp/*
 
 ENV YOUTRACK_VERSION 6.0.12634
 RUN wget http://download.jetbrains.com/charisma/youtrack-$YOUTRACK_VERSION.jar -O youtrack.jar
