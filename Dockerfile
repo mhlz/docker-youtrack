@@ -1,7 +1,7 @@
 FROM dockerfile/java:oracle-java8
 MAINTAINER Oleg Yashchuk <oazoer@gmail.com>
 
-ENV YOUTRACK_VERSION 6.0.12223
+ENV YOUTRACK_VERSION 6.0.12634
 RUN wget http://download.jetbrains.com/charisma/youtrack-$YOUTRACK_VERSION.jar -O youtrack.jar
 
 # RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
